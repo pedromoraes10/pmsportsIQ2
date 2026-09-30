@@ -107,17 +107,38 @@
     }
   }
 
-  function init(){
+  let mounted=false;
+  let obs=null;
+
+  function mountAfterLogin(){
+    if(mounted)return true;
+    const overlay=document.getElementById('loginOverlay');
+
+    // Do not touch the application shell while authentication is in progress.
+    // The legacy auth/bootstrap code must complete first.
+    if(overlay && getComputedStyle(overlay).display!=='none')return false;
+
     buildShell();
     buildScoutingLayout();
     polishDetail();
+    mounted=true;
 
     // Some panels are rendered dynamically after navigation.
-    const obs=new MutationObserver(()=>{
+    obs=new MutationObserver(()=>{
       buildScoutingLayout();
       polishDetail();
     });
     obs.observe(document.body,{childList:true,subtree:true});
+    return true;
+  }
+
+  function init(){
+    if(mountAfterLogin())return;
+
+    // Watch only for the login overlay to be hidden, then mount V3 once.
+    const timer=setInterval(()=>{
+      if(mountAfterLogin())clearInterval(timer);
+    },400);
   }
 
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);

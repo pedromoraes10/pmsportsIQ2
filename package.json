@@ -1,0 +1,24 @@
+{
+  "name": "pm-sports-iq",
+  "version": "1.0.0",
+  "description": "PM Sports IQ — dashboard de scouting + backend de importação do ogol.com.br, num único projeto/porta.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "sync:upload": "node scripts/syncOutputToProduction.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "axios-cookiejar-support": "^5.0.3",
+    "cheerio": "^1.0.0",
+    "compression": "^1.8.2",
+    "express": "^4.21.0",
+    "playwright": "^1.63.0",
+    "tough-cookie": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

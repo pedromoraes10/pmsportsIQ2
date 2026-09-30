@@ -1,0 +1,6 @@
+node_modules/
+output/*.json
+output/*.raw.html
+output/_lists/
+.env
+.DS_Store

@@ -1,0 +1,340 @@
+/* PM Sports IQ — Production Redesign
+   Activated only after successful login by production-ui.js */
+body.pm-production-ui{
+  --pmiq-bg:#06101a;
+  --pmiq-bg2:#081521;
+  --pmiq-panel:#0b1a28;
+  --pmiq-panel2:#0e2030;
+  --pmiq-line:rgba(255,255,255,.075);
+  --pmiq-line2:rgba(255,255,255,.13);
+  --pmiq-text:#f3f5f7;
+  --pmiq-muted:#8495a6;
+  --pmiq-dim:#526679;
+  --pmiq-gold:#e4b756;
+  --pmiq-gold2:#f2ca72;
+  --pmiq-gold-bg:rgba(228,183,86,.10);
+  --pmiq-green:#45d28a;
+  --pmiq-red:#ef6464;
+  background:var(--pmiq-bg)!important;
+  color:var(--pmiq-text)!important;
+}
+
+/* LOGIN IS INTENTIONALLY UNTOUCHED */
+
+/* app shell */
+body.pm-production-ui .top{
+  height:64px!important;
+  padding:0 24px 0 26px!important;
+  background:rgba(5,16,26,.97)!important;
+  border-bottom:1px solid var(--pmiq-line)!important;
+  box-shadow:none!important;
+}
+body.pm-production-ui .top .logo{display:none!important}
+body.pm-production-ui .top-div{
+  border:0!important;padding:0!important;
+  font-family:var(--fb)!important;font-size:12px!important;
+  letter-spacing:.2px!important;color:var(--pmiq-muted)!important;
+  text-transform:none!important;
+}
+body.pm-production-ui .top-tag{
+  background:var(--pmiq-gold-bg)!important;
+  border:1px solid rgba(228,183,86,.22)!important;
+  color:var(--pmiq-gold)!important;border-radius:999px!important;
+  padding:4px 8px!important
+}
+body.pm-production-ui .top-r{gap:9px!important}
+body.pm-production-ui .api-lbl{font-size:8px!important;color:var(--pmiq-dim)!important}
+body.pm-production-ui .api-inp,
+body.pm-production-ui #clubStyleSel{
+  height:34px!important;background:#0a1926!important;
+  border:1px solid var(--pmiq-line2)!important;
+  border-radius:8px!important;color:var(--pmiq-text)!important
+}
+body.pm-production-ui .app{height:calc(100vh - 64px)!important;background:var(--pmiq-bg)!important}
+body.pm-production-ui .main{
+  background:
+    radial-gradient(circle at 82% -8%,rgba(48,87,120,.12),transparent 28%),
+    linear-gradient(180deg,#06111c,#06101a)!important;
+}
+
+/* sidebar */
+body.pm-production-ui .sb{
+  width:272px!important;min-width:272px!important;
+  background:
+    radial-gradient(circle at 30% 100%,rgba(31,70,98,.18),transparent 30%),
+    linear-gradient(180deg,#071521 0%,#06111b 100%)!important;
+  border-right:1px solid var(--pmiq-line)!important;
+  padding-bottom:24px!important
+}
+body.pm-production-ui .pm-prod-brand{
+  padding:20px 18px 17px;display:flex;align-items:center;gap:12px;
+  border-bottom:1px solid var(--pmiq-line)
+}
+body.pm-production-ui .pm-prod-mark{
+  width:38px;height:38px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--pmiq-gold);font-size:18px;
+  background:var(--pmiq-gold-bg);
+  border:1px solid rgba(228,183,86,.28)
+}
+body.pm-production-ui .pm-prod-brand-title{
+  font-family:var(--fd);font-size:19px;font-weight:900;
+  letter-spacing:1.9px;color:#f4efe4
+}
+body.pm-production-ui .pm-prod-brand-sub{
+  font-family:var(--fm);font-size:7px;letter-spacing:1.6px;
+  color:#667b8f;text-transform:uppercase;margin-top:3px
+}
+body.pm-production-ui .pm-prod-nav{
+  padding:15px 10px 12px;display:flex;flex-direction:column;gap:3px;
+  border-bottom:1px solid var(--pmiq-line)
+}
+body.pm-production-ui .pm-prod-nav-btn{
+  position:relative;width:100%;height:43px;padding:0 13px;
+  display:flex;align-items:center;gap:11px;border:1px solid transparent;
+  border-radius:9px;background:transparent;color:#8da0b2;
+  font-family:var(--fb);font-size:12px;cursor:pointer;text-align:left;
+  transition:.16s ease
+}
+body.pm-production-ui .pm-prod-nav-btn:hover{
+  background:rgba(255,255,255,.025);color:#e7edf1
+}
+body.pm-production-ui .pm-prod-nav-btn.active{
+  color:#f2cc79;background:linear-gradient(90deg,rgba(228,183,86,.14),rgba(228,183,86,.035));
+  border-color:rgba(228,183,86,.15)
+}
+body.pm-production-ui .pm-prod-nav-btn.active:before{
+  content:'';position:absolute;left:-10px;top:9px;bottom:9px;width:2px;
+  border-radius:4px;background:var(--pmiq-gold)
+}
+body.pm-production-ui .pm-prod-nav-ico{
+  width:20px;text-align:center;font-size:14px;color:inherit
+}
+body.pm-production-ui .pm-prod-context-toggle{
+  margin:13px 14px 5px;width:calc(100% - 28px);height:34px;
+  display:flex;align-items:center;justify-content:space-between;
+  border:1px solid var(--pmiq-line);border-radius:8px;
+  background:rgba(255,255,255,.018);color:#667d91;
+  padding:0 10px;font-family:var(--fm);font-size:8px;
+  letter-spacing:1.2px;text-transform:uppercase;cursor:pointer
+}
+body.pm-production-ui .sb:not(.pm-context-open)>.sb-sec{display:none!important}
+body.pm-production-ui .sb.pm-context-open>.sb-sec{display:block!important}
+body.pm-production-ui .sb-sec{
+  padding:12px 15px!important;border-bottom:1px solid rgba(255,255,255,.05)!important
+}
+body.pm-production-ui .sb-h{
+  color:#70859a!important;font-size:8px!important;letter-spacing:1.2px!important
+}
+body.pm-production-ui .sb-h:before{background:var(--pmiq-gold)!important}
+body.pm-production-ui .sb-toggle{
+  left:259px!important;top:15px!important;
+  background:#102334!important;border-color:var(--pmiq-line2)!important
+}
+body.pm-production-ui .app.sb-collapsed .sb-toggle{left:8px!important}
+
+/* hide legacy horizontal nav only after production UI mounted */
+body.pm-production-ui .main>.tabs{display:none!important}
+
+/* shared controls */
+body.pm-production-ui .sel,
+body.pm-production-ui .inp,
+body.pm-production-ui .ac-inp,
+body.pm-production-ui .an-dropdown-search{
+  background:#0a1926!important;border:1px solid var(--pmiq-line2)!important;
+  border-radius:8px!important;color:var(--pmiq-text)!important;
+  min-height:35px!important
+}
+body.pm-production-ui .sel:focus,
+body.pm-production-ui .inp:focus,
+body.pm-production-ui .ac-inp:focus{
+  border-color:rgba(228,183,86,.42)!important;
+  box-shadow:0 0 0 3px rgba(228,183,86,.075)!important
+}
+body.pm-production-ui .btn,
+body.pm-production-ui .print-btn,
+body.pm-production-ui .add-to-sl-btn{
+  border-radius:8px!important;font-family:var(--fb)!important;
+  text-transform:none!important;letter-spacing:.1px!important
+}
+body.pm-production-ui .btn.ba,
+body.pm-production-ui .add-to-sl-btn{
+  background:linear-gradient(180deg,rgba(228,183,86,.20),rgba(228,183,86,.10))!important;
+  border:1px solid rgba(228,183,86,.34)!important;color:var(--pmiq-gold2)!important
+}
+body.pm-production-ui .card,
+body.pm-production-ui .stat-card{
+  background:linear-gradient(180deg,rgba(13,29,43,.97),rgba(8,22,34,.97))!important;
+  border:1px solid var(--pmiq-line)!important;
+  border-radius:14px!important;box-shadow:0 14px 34px rgba(0,0,0,.12)!important
+}
+body.pm-production-ui .chd{border-bottom-color:var(--pmiq-line)!important}
+body.pm-production-ui .cttl{font-family:var(--fd)!important;font-size:16px!important;text-transform:none!important}
+body.pm-production-ui .cdot{background:var(--pmiq-gold)!important}
+
+/* Dashboard */
+body.pm-production-ui #panel-dashboard{padding:0!important}
+body.pm-production-ui .pm-prod-dashboard{padding:34px 36px 48px;max-width:1560px;margin:0 auto}
+body.pm-production-ui .pm-prod-hero{
+  padding:4px 0 26px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px
+}
+body.pm-production-ui .pm-prod-eyebrow{
+  font-family:var(--fm);font-size:9px;letter-spacing:1.9px;text-transform:uppercase;
+  color:var(--pmiq-gold);margin-bottom:8px
+}
+body.pm-production-ui .pm-prod-title{
+  font-family:var(--fd);font-size:42px;font-weight:900;line-height:.98;
+  letter-spacing:-.5px;color:#f4f6f8
+}
+body.pm-production-ui .pm-prod-title em{font-style:normal;color:var(--pmiq-gold2)}
+body.pm-production-ui .pm-prod-sub{
+  margin-top:10px;max-width:640px;color:var(--pmiq-muted);
+  font-size:12px;line-height:1.55
+}
+body.pm-production-ui .pm-prod-scope{
+  margin-top:9px;font-family:var(--fm);font-size:9px;color:#64798d
+}
+body.pm-production-ui .pm-prod-dash-actions{display:flex;gap:8px;align-items:center}
+body.pm-production-ui .pm-prod-kpis{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:16px
+}
+body.pm-production-ui .pm-prod-kpi{
+  min-height:120px;padding:18px 19px!important;display:flex;flex-direction:column;justify-content:space-between
+}
+body.pm-production-ui .pm-prod-kpi-head{display:flex;justify-content:space-between;align-items:center}
+body.pm-production-ui .pm-prod-kpi-icon{
+  width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:var(--pmiq-gold-bg);border:1px solid rgba(228,183,86,.16);color:var(--pmiq-gold)
+}
+body.pm-production-ui .pm-prod-kpi-tag{
+  font-family:var(--fm);font-size:7px;letter-spacing:1.1px;color:#506679;text-transform:uppercase
+}
+body.pm-production-ui .pm-prod-kpi .stat-val{font-size:34px!important;color:#f4f6f7!important}
+body.pm-production-ui .pm-prod-kpi .stat-lbl{font-size:8px!important;letter-spacing:1.15px!important;color:#708397!important}
+body.pm-production-ui .pm-prod-dash-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-bottom:16px
+}
+body.pm-production-ui .pm-prod-chart-card{margin:0!important;min-height:320px}
+body.pm-production-ui .pm-prod-chart-card .cw{height:250px!important}
+body.pm-production-ui .pm-prod-profiles{margin:0!important}
+body.pm-production-ui .pm-prod-profile-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px
+}
+body.pm-production-ui .pm-prod-profile-grid>div+div{
+  border-left:1px solid var(--pmiq-line);padding-left:18px
+}
+body.pm-production-ui .pm-prod-card-title{
+  font-family:var(--fd);font-size:18px;font-weight:800;color:#f1f4f6
+}
+body.pm-production-ui .pm-prod-card-sub{font-size:10px;color:#64798c;margin-top:2px}
+
+/* Player Scouting */
+body.pm-production-ui #panel-analysis{padding:30px 32px 44px!important;max-width:1600px;margin:0 auto}
+body.pm-production-ui #panel-analysis:before{
+  content:'Player Scouting';display:block;margin:0 0 18px;
+  font-family:var(--fd);font-size:34px;font-weight:900;color:#f3f5f7
+}
+body.pm-production-ui #anListWrap>.card{
+  padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important
+}
+body.pm-production-ui #anListWrap>.card>.chd{
+  margin:0 0 12px!important;padding:0!important;border:0!important
+}
+body.pm-production-ui .pm-prod-scout-grid{
+  display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px;align-items:start
+}
+body.pm-production-ui .pm-prod-filter-panel,
+body.pm-production-ui .pm-prod-results-panel{
+  background:linear-gradient(180deg,#0c1c2a,#091722);
+  border:1px solid var(--pmiq-line);border-radius:15px;
+  box-shadow:0 16px 36px rgba(0,0,0,.12)
+}
+body.pm-production-ui .pm-prod-filter-panel{
+  padding:14px;position:sticky;top:16px;max-height:calc(100vh - 110px);overflow:auto
+}
+body.pm-production-ui .pm-prod-results-panel{padding:14px;min-width:0}
+body.pm-production-ui .pm-prod-panel-head{
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--pmiq-line);padding:2px 2px 12px;margin-bottom:12px
+}
+body.pm-production-ui .pm-prod-panel-head strong{
+  font-family:var(--fd);font-size:18px;color:#f1f4f6
+}
+body.pm-production-ui .pm-prod-panel-head span{font-size:9px;color:#62788d}
+body.pm-production-ui .pm-prod-filter-panel .an-filter-row{
+  display:block!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important
+}
+body.pm-production-ui .pm-prod-filter-panel .an-filter-field{
+  width:100%!important;min-width:0!important;margin-bottom:12px!important
+}
+body.pm-production-ui .pm-prod-filter-panel .an-filter-row>div[style*="grid-column"]{width:100%!important}
+body.pm-production-ui .an-filter-lbl{
+  font-size:8px!important;color:#72869a!important;letter-spacing:1.1px!important
+}
+body.pm-production-ui .an-multi-box{
+  min-height:36px!important;border-radius:8px!important;
+  background:#0a1926!important;border:1px solid var(--pmiq-line2)!important
+}
+body.pm-production-ui .an-chip{
+  border-radius:999px!important;background:rgba(255,255,255,.02)!important;
+  border-color:var(--pmiq-line2)!important;color:#8092a4!important
+}
+body.pm-production-ui .an-chip:hover{
+  border-color:rgba(228,183,86,.34)!important;color:var(--pmiq-gold)!important
+}
+body.pm-production-ui .pm-prod-results-panel .an-list-toolbar{
+  padding:0 0 12px!important;display:grid!important;
+  grid-template-columns:auto minmax(180px,1fr) auto auto auto!important;gap:8px!important
+}
+body.pm-production-ui .pm-prod-results-panel .an-table-wrap{
+  border:1px solid var(--pmiq-line)!important;border-radius:12px!important;
+  overflow:auto!important;max-height:calc(100vh - 240px);min-height:520px;background:#071521!important
+}
+body.pm-production-ui .an-table th{
+  background:#0d1e2c!important;color:#72869a!important;border-bottom:1px solid var(--pmiq-line2)!important;
+  font-size:8px!important;letter-spacing:.8px!important;padding:10px!important
+}
+body.pm-production-ui .an-table td{
+  border-bottom:1px solid rgba(255,255,255,.045)!important;padding:10px!important
+}
+body.pm-production-ui .an-table tbody tr:hover td{background:rgba(228,183,86,.03)!important}
+
+/* player detail and rest of product */
+body.pm-production-ui #anDetailWrap>.print-btn-row{
+  position:sticky;top:0;z-index:10;padding:10px!important;margin-bottom:14px!important;
+  border:1px solid var(--pmiq-line)!important;border-radius:12px!important;
+  background:rgba(8,22,34,.94)!important;backdrop-filter:blur(10px)
+}
+body.pm-production-ui #panel-shortlist,
+body.pm-production-ui #panel-squadtracker,
+body.pm-production-ui #panel-leagueanalyze,
+body.pm-production-ui #panel-requests,
+body.pm-production-ui #panel-admin{
+  padding:30px 32px 44px!important;max-width:1600px;margin:0 auto
+}
+body.pm-production-ui #panel-shortlist:before,
+body.pm-production-ui #panel-squadtracker:before,
+body.pm-production-ui #panel-leagueanalyze:before,
+body.pm-production-ui #panel-requests:before,
+body.pm-production-ui #panel-admin:before{
+  display:block;margin:0 0 18px;font-family:var(--fd);
+  font-size:34px;font-weight:900;color:#f3f5f7
+}
+body.pm-production-ui #panel-shortlist:before{content:'Club Shortlists'}
+body.pm-production-ui #panel-squadtracker:before{content:'Squad Performance'}
+body.pm-production-ui #panel-leagueanalyze:before{content:'League Analysis'}
+body.pm-production-ui #panel-requests:before{content:'Club Requests'}
+body.pm-production-ui #panel-admin:before{content:'Administration'}
+
+@media(max-width:1180px){
+  body.pm-production-ui .pm-prod-kpis{grid-template-columns:repeat(2,1fr)}
+  body.pm-production-ui .pm-prod-dash-grid{grid-template-columns:1fr}
+  body.pm-production-ui .pm-prod-scout-grid{grid-template-columns:280px minmax(0,1fr)}
+}
+@media(max-width:900px){
+  body.pm-production-ui .sb{width:220px!important;min-width:220px!important}
+  body.pm-production-ui .pm-prod-scout-grid{grid-template-columns:1fr}
+  body.pm-production-ui .pm-prod-filter-panel{position:static;max-height:none}
+  body.pm-production-ui .pm-prod-profile-grid{grid-template-columns:1fr}
+  body.pm-production-ui .pm-prod-profile-grid>div+div{border-left:0;border-top:1px solid var(--pmiq-line);padding-left:0;padding-top:16px}
+}

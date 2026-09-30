@@ -544,7 +544,6 @@ table.an-table .an-num{text-align:right;font-family:var(--fm);}
 .range-track{position:absolute;height:4px;background:var(--w1);border-radius:2px;width:100%}
 .range-fill{position:absolute;height:4px;background:var(--lime);border-radius:2px}
 </style>
-<link rel="stylesheet" href="/css/pm-v2.css?v=20260930-fullrestore1">
 </head>
 <body>
 
@@ -553,9 +552,9 @@ table.an-table .an-num{text-align:right;font-family:var(--fm);}
 <div class="login-overlay" id="loginOverlay">
   <div style="background:var(--bg3);border:1px solid var(--lime3);border-radius:8px;padding:40px;width:380px;text-align:center;position:relative">
     <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px">
-      <span class="pm-logo-mark">◆</span>
+      <img src="/brand/logo-icon.png" alt="" style="width:26px;height:26px;display:block">
       <div style="width:8px;height:8px;background:var(--lime);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)"></div>
-      <span style="font-family:var(--fd);font-size:20px;font-weight:900;letter-spacing:2px;color:var(--lime)">PM SPORTS IQ <span style="font-family:var(--fm);font-size:8px;letter-spacing:1px;color:var(--pm-gold);border:1px solid var(--pm-gold-border);background:var(--pm-gold-soft);padding:3px 6px;border-radius:999px;margin-left:4px">V2</span></span>
+      <span style="font-family:var(--fd);font-size:20px;font-weight:900;letter-spacing:2px;color:var(--lime)">PM SPORTS IQ</span>
     </div>
     <div style="font-family:var(--fm);font-size:9px;letter-spacing:2px;color:var(--tx4);text-transform:uppercase;margin-bottom:28px">PM Sports Group</div>
     <div style="margin-bottom:12px;text-align:left">
@@ -607,7 +606,7 @@ table.an-table .an-num{text-align:right;font-family:var(--fm);}
 </div>
 
 <div class="top">
-  <div class="logo"><span class="pm-logo-mark">◆</span><div class="logo-gem"></div>PM Sports IQ</div>
+  <div class="logo"><img src="/brand/logo-icon.png" alt="" style="width:22px;height:22px;display:block"><div class="logo-gem"></div>PM Sports IQ</div>
   <div class="top-div">Intelligence Suite</div>
   <div class="top-tag">v320.0</div>
   <div class="top-r">
@@ -737,30 +736,43 @@ table.an-table .an-num{text-align:right;font-family:var(--fm);}
 
 <!-- ══ TAB 0: DASHBOARD ══ -->
 <div class="panel active" id="panel-dashboard">
-  <div class="pm-dashboard">
-    <div class="pm-dash-hero">
-      <div>
-        <div class="pm-eyebrow">PM Sports IQ · Scouting Intelligence</div>
-        <div class="pm-dash-title">Scouting Database</div>
-        <div class="pm-dash-sub">A live view of the player database currently available inside PM Sports IQ. All indicators below use existing database information only.</div>
-        <div class="pm-dash-scope" id="dashScope">Load leagues to see breakdowns</div>
-      </div>
-      <div class="pm-dash-actions">
-        <select id="dashSeasonFilter" class="sel" onchange="onDashSeasonChange()"><option value="">All Seasons</option></select>
-        <button class="btn ba" id="dashLoadAllBtn" onclick="dashLoadAll()">⬇ Load Full Stats</button>
-      </div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+    <div>
+      <div style="font-family:var(--fd);font-size:24px;font-weight:800;letter-spacing:.3px;color:var(--tx)">Scouting Database</div>
+      <div style="font-family:var(--fm);font-size:10px;color:var(--tx3);margin-top:2px" id="dashScope">Load leagues to see breakdowns</div>
     </div>
-    <div class="pm-kpi-grid" id="dashStatCards">
-      <div class="stat-card pm-kpi"><div class="pm-kpi-top"><div class="pm-kpi-icon">◈</div><div class="pm-kpi-note">Database</div></div><div><div class="stat-val" id="dashTotalPlayers">—</div><div class="stat-lbl">Total Players</div></div></div>
-      <div class="stat-card pm-kpi"><div class="pm-kpi-top"><div class="pm-kpi-icon">◎</div><div class="pm-kpi-note">Coverage</div></div><div><div class="stat-val" id="dashTotalLeagues">—</div><div class="stat-lbl">Leagues</div></div></div>
-      <div class="stat-card pm-kpi"><div class="pm-kpi-top"><div class="pm-kpi-icon">↧</div><div class="pm-kpi-note">Loaded</div></div><div><div class="stat-val" id="dashLoadedPlayers">—</div><div class="stat-lbl">Players Loaded</div></div></div>
-      <div class="stat-card pm-kpi"><div class="pm-kpi-top"><div class="pm-kpi-icon">⌁</div><div class="pm-kpi-note">Profile</div></div><div><div class="stat-val" id="dashAvgAge">—</div><div class="stat-lbl">Average Age · Loaded</div></div></div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <select id="dashSeasonFilter" class="sel" style="margin:0;width:auto;font-size:10px" onchange="onDashSeasonChange()">
+        <option value="">All Seasons</option>
+      </select>
+      <button class="btn ba" id="dashLoadAllBtn" onclick="dashLoadAll()">⬇ Load Full Stats</button>
     </div>
-    <div class="pm-dash-grid">
-      <div class="card pm-dash-card"><div class="chd"><div><div class="pm-section-title">Players by Position</div><div class="pm-section-sub">Squad-role distribution across loaded leagues</div></div><span class="pm-card-meta">LIVE DATABASE</span></div><div class="cw"><canvas id="dashPosChart" height="220"></canvas></div></div>
-      <div class="card pm-dash-card"><div class="chd"><div><div class="pm-section-title">Top Nationalities</div><div class="pm-section-sub">Most represented nationalities in loaded data</div></div><span class="pm-card-meta">TOP 10</span></div><div class="cw"><canvas id="dashNatChart" height="220"></canvas></div></div>
+  </div>
+
+  <div id="dashStatCards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px">
+    <div class="stat-card"><div class="stat-val" id="dashTotalPlayers">—</div><div class="stat-lbl">Total Players (DB)</div></div>
+    <div class="stat-card"><div class="stat-val" id="dashTotalLeagues">—</div><div class="stat-lbl">Leagues</div></div>
+    <div class="stat-card"><div class="stat-val" id="dashLoadedPlayers">—</div><div class="stat-lbl">Players Loaded</div></div>
+    <div class="stat-card"><div class="stat-val" id="dashAvgAge">—</div><div class="stat-lbl">Avg. Age (loaded)</div></div>
+  </div>
+
+  <div class="g2" style="margin-bottom:14px">
+    <div class="card">
+      <div class="chd"><div class="cttl"><div class="cdot"></div>Players by Position</div><span style="font-family:var(--fm);font-size:9px;color:var(--tx3)">Based on loaded leagues</span></div>
+      <div class="cw"><canvas id="dashPosChart" height="220"></canvas></div>
     </div>
-    <div class="card pm-profile-card"><div class="chd"><div><div class="pm-section-title">Player Profiles</div><div class="pm-section-sub">Age and contract distribution across loaded players</div></div><span class="pm-card-meta">DATABASE PROFILE</span></div><div class="pm-profile-grid"><div class="pm-profile-panel"><div class="cw"><canvas id="dashAgeChart" height="200"></canvas></div></div><div class="pm-profile-panel"><div class="cw"><canvas id="dashContractChart" height="200"></canvas></div></div></div></div>
+    <div class="card">
+      <div class="chd"><div class="cttl"><div class="cdot"></div>Top Nationalities</div><span style="font-family:var(--fm);font-size:9px;color:var(--tx3)">Based on loaded leagues</span></div>
+      <div class="cw"><canvas id="dashNatChart" height="220"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chd"><div class="cttl"><div class="cdot"></div>Player Profiles</div><span style="font-family:var(--fm);font-size:9px;color:var(--tx3)">Age & contract distribution across loaded players</span></div>
+    <div class="g2">
+      <div class="cw"><canvas id="dashAgeChart" height="200"></canvas></div>
+      <div class="cw"><canvas id="dashContractChart" height="200"></canvas></div>
+    </div>
   </div>
 </div>
 
@@ -3768,14 +3780,14 @@ function renderDashboard(){
   loaded.forEach(p=>{const r=ROLE_LABEL[p.role]||ROLE_LABEL[getRoleCat(p.position)]||'Other';posCounts[r]=(posCounts[r]||0)+1;});
   const posOrder=['GK','CB','FB','DM','CAM','Winger','Striker'];
   const posLabels=posOrder.filter(k=>posCounts[k]);
-  _dashChart('dashPosChart',{type:'bar',data:{labels:posLabels,datasets:[{label:'Players',data:posLabels.map(k=>posCounts[k]),backgroundColor:'#e4b756'}]},
+  _dashChart('dashPosChart',{type:'bar',data:{labels:posLabels,datasets:[{label:'Players',data:posLabels.map(k=>posCounts[k]),backgroundColor:'#c8ff00'}]},
     options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8ca4c0'},grid:{display:false}},y:{ticks:{color:'#8ca4c0'},grid:{color:'rgba(255,255,255,.06)'}}}}});
 
   // Top nationalities
   const natCounts={};
   loaded.forEach(p=>{const n=p.birthCountry||p.passportCountry;if(!n)return;natCounts[n]=(natCounts[n]||0)+1;});
   const topNats=Object.entries(natCounts).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  _dashChart('dashNatChart',{type:'bar',data:{labels:topNats.map(x=>x[0]),datasets:[{label:'Players',data:topNats.map(x=>x[1]),backgroundColor:'#5ba9ef'}]},
+  _dashChart('dashNatChart',{type:'bar',data:{labels:topNats.map(x=>x[0]),datasets:[{label:'Players',data:topNats.map(x=>x[1]),backgroundColor:'#5dd0f5'}]},
     options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8ca4c0'},grid:{color:'rgba(255,255,255,.06)'}},y:{ticks:{color:'#8ca4c0'},grid:{display:false}}}}});
 
   // Age distribution
@@ -3784,14 +3796,14 @@ function renderDashboard(){
   loaded.forEach(p=>{const a=p.age;if(!a)return;
     const idx=a<18?0:a<=21?1:a<=25?2:a<=29?3:a<=33?4:5;
     ageCounts[idx]++;});
-  _dashChart('dashAgeChart',{type:'bar',data:{labels:ageBuckets,datasets:[{label:'Players',data:ageCounts,backgroundColor:'#e4b756'}]},
+  _dashChart('dashAgeChart',{type:'bar',data:{labels:ageBuckets,datasets:[{label:'Players',data:ageCounts,backgroundColor:'#ffd166'}]},
     options:{plugins:{legend:{display:false},title:{display:true,text:'Age distribution',color:'#8ca4c0',font:{size:10}}},scales:{x:{ticks:{color:'#8ca4c0'},grid:{display:false}},y:{ticks:{color:'#8ca4c0'},grid:{color:'rgba(255,255,255,.06)'}}}}});
 
   // Contract expiry distribution
   const ceCounts={};
   loaded.forEach(p=>{const ce=(p.contractExpires||'').slice(0,4);if(!ce||ce.length!==4)return;ceCounts[ce]=(ceCounts[ce]||0)+1;});
   const ceLabels=Object.keys(ceCounts).sort();
-  _dashChart('dashContractChart',{type:'bar',data:{labels:ceLabels,datasets:[{label:'Players',data:ceLabels.map(k=>ceCounts[k]),backgroundColor:'#8c6bd6'}]},
+  _dashChart('dashContractChart',{type:'bar',data:{labels:ceLabels,datasets:[{label:'Players',data:ceLabels.map(k=>ceCounts[k]),backgroundColor:'#ff8c42'}]},
     options:{plugins:{legend:{display:false},title:{display:true,text:'Contract expiry year',color:'#8ca4c0',font:{size:10}}},scales:{x:{ticks:{color:'#8ca4c0'},grid:{display:false}},y:{ticks:{color:'#8ca4c0'},grid:{color:'rgba(255,255,255,.06)'}}}}});
 }
 let _dashSeasonSel='';
@@ -8204,7 +8216,7 @@ async function exportPlayerReportFromCurrentState(sp){
     <div id="cmpContent"></div>
   </div>
 </div>
-<script src="/js/ui-v3.js?v=20260930-struct1"></script>\n</body></html>`;
+</body></html>`;
 
   win.document.write(D);
   win.document.close();

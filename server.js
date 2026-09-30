@@ -29,22 +29,6 @@ app.use(compression());
 app.use(express.json());
 
 // Dashboard servido pela mesma origem da API — sem CORS, sem "Backend URL" pra digitar.
-// Serve index.html through a tiny runtime injection so auth compatibility fixes can
-// be shipped independently from the very large legacy frontend file.
-app.get('/', (_req, res) => {
-  try {
-    const indexPath = path.join(PUBLIC_DIR, 'index.html');
-    let html = fs.readFileSync(indexPath, 'utf-8');
-    const patchTag = '<script src="/js/auth-fix.js?v=20260930-auth1"></script>';
-    if (!html.includes('/js/auth-fix.js')) {
-      html = html.replace('</body>', patchTag + '\n</body>');
-    }
-    res.type('html').send(html);
-  } catch (err) {
-    res.status(500).send('Failed to load PM Sports IQ: ' + err.message);
-  }
-});
-
 app.use(express.static(PUBLIC_DIR));
 
 // --- Saúde da API -----------------------------------------------------

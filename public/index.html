@@ -544,7 +544,6 @@ table.an-table .an-num{text-align:right;font-family:var(--fm);}
 .range-track{position:absolute;height:4px;background:var(--w1);border-radius:2px;width:100%}
 .range-fill{position:absolute;height:4px;background:var(--lime);border-radius:2px}
 </style>
-<link rel="stylesheet" href="/css/production-ui.css?v=20260930-prod1">
 </head>
 <body>
 
@@ -737,58 +736,42 @@ table.an-table .an-num{text-align:right;font-family:var(--fm);}
 
 <!-- ══ TAB 0: DASHBOARD ══ -->
 <div class="panel active" id="panel-dashboard">
-  <div class="pm-prod-dashboard">
-    <div class="pm-prod-hero">
-      <div>
-        <div class="pm-prod-eyebrow">Global Scouting Intelligence</div>
-        <div class="pm-prod-title">Scouting <em>Database</em></div>
-        <div class="pm-prod-sub">Search, analyse and understand the player database already connected to PM Sports IQ. All figures below come from the existing data loaded in the platform.</div>
-        <div class="pm-prod-scope" id="dashScope">Load leagues to see breakdowns</div>
-      </div>
-      <div class="pm-prod-dash-actions">
-        <select id="dashSeasonFilter" class="sel" onchange="onDashSeasonChange()">
-          <option value="">All Seasons</option>
-        </select>
-        <button class="btn ba" id="dashLoadAllBtn" onclick="dashLoadAll()">Load Full Stats</button>
-      </div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+    <div>
+      <div style="font-family:var(--fd);font-size:24px;font-weight:800;letter-spacing:.3px;color:var(--tx)">Scouting Database</div>
+      <div style="font-family:var(--fm);font-size:10px;color:var(--tx3);margin-top:2px" id="dashScope">Load leagues to see breakdowns</div>
     </div>
-
-    <div class="pm-prod-kpis" id="dashStatCards">
-      <div class="stat-card pm-prod-kpi">
-        <div class="pm-prod-kpi-head"><div class="pm-prod-kpi-icon">◉</div><div class="pm-prod-kpi-tag">Database</div></div>
-        <div><div class="stat-val" id="dashTotalPlayers">—</div><div class="stat-lbl">Total Players</div></div>
-      </div>
-      <div class="stat-card pm-prod-kpi">
-        <div class="pm-prod-kpi-head"><div class="pm-prod-kpi-icon">◎</div><div class="pm-prod-kpi-tag">Coverage</div></div>
-        <div><div class="stat-val" id="dashTotalLeagues">—</div><div class="stat-lbl">Leagues</div></div>
-      </div>
-      <div class="stat-card pm-prod-kpi">
-        <div class="pm-prod-kpi-head"><div class="pm-prod-kpi-icon">▤</div><div class="pm-prod-kpi-tag">Loaded</div></div>
-        <div><div class="stat-val" id="dashLoadedPlayers">—</div><div class="stat-lbl">Players Loaded</div></div>
-      </div>
-      <div class="stat-card pm-prod-kpi">
-        <div class="pm-prod-kpi-head"><div class="pm-prod-kpi-icon">◌</div><div class="pm-prod-kpi-tag">Profile</div></div>
-        <div><div class="stat-val" id="dashAvgAge">—</div><div class="stat-lbl">Average Age</div></div>
-      </div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <select id="dashSeasonFilter" class="sel" style="margin:0;width:auto;font-size:10px" onchange="onDashSeasonChange()">
+        <option value="">All Seasons</option>
+      </select>
+      <button class="btn ba" id="dashLoadAllBtn" onclick="dashLoadAll()">⬇ Load Full Stats</button>
     </div>
+  </div>
 
-    <div class="pm-prod-dash-grid">
-      <div class="card pm-prod-chart-card">
-        <div class="chd"><div><div class="pm-prod-card-title">Players by Position</div><div class="pm-prod-card-sub">Distribution across loaded leagues</div></div></div>
-        <div class="cw"><canvas id="dashPosChart" height="220"></canvas></div>
-      </div>
-      <div class="card pm-prod-chart-card">
-        <div class="chd"><div><div class="pm-prod-card-title">Top Nationalities</div><div class="pm-prod-card-sub">Most represented nationalities in loaded data</div></div></div>
-        <div class="cw"><canvas id="dashNatChart" height="220"></canvas></div>
-      </div>
+  <div id="dashStatCards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px">
+    <div class="stat-card"><div class="stat-val" id="dashTotalPlayers">—</div><div class="stat-lbl">Total Players (DB)</div></div>
+    <div class="stat-card"><div class="stat-val" id="dashTotalLeagues">—</div><div class="stat-lbl">Leagues</div></div>
+    <div class="stat-card"><div class="stat-val" id="dashLoadedPlayers">—</div><div class="stat-lbl">Players Loaded</div></div>
+    <div class="stat-card"><div class="stat-val" id="dashAvgAge">—</div><div class="stat-lbl">Avg. Age (loaded)</div></div>
+  </div>
+
+  <div class="g2" style="margin-bottom:14px">
+    <div class="card">
+      <div class="chd"><div class="cttl"><div class="cdot"></div>Players by Position</div><span style="font-family:var(--fm);font-size:9px;color:var(--tx3)">Based on loaded leagues</span></div>
+      <div class="cw"><canvas id="dashPosChart" height="220"></canvas></div>
     </div>
+    <div class="card">
+      <div class="chd"><div class="cttl"><div class="cdot"></div>Top Nationalities</div><span style="font-family:var(--fm);font-size:9px;color:var(--tx3)">Based on loaded leagues</span></div>
+      <div class="cw"><canvas id="dashNatChart" height="220"></canvas></div>
+    </div>
+  </div>
 
-    <div class="card pm-prod-profiles">
-      <div class="chd"><div><div class="pm-prod-card-title">Player Profiles</div><div class="pm-prod-card-sub">Age and contract distribution across loaded players</div></div></div>
-      <div class="pm-prod-profile-grid">
-        <div class="cw"><canvas id="dashAgeChart" height="200"></canvas></div>
-        <div class="cw"><canvas id="dashContractChart" height="200"></canvas></div>
-      </div>
+  <div class="card">
+    <div class="chd"><div class="cttl"><div class="cdot"></div>Player Profiles</div><span style="font-family:var(--fm);font-size:9px;color:var(--tx3)">Age & contract distribution across loaded players</span></div>
+    <div class="g2">
+      <div class="cw"><canvas id="dashAgeChart" height="200"></canvas></div>
+      <div class="cw"><canvas id="dashContractChart" height="200"></canvas></div>
     </div>
   </div>
 </div>
@@ -8233,7 +8216,6 @@ async function exportPlayerReportFromCurrentState(sp){
     <div id="cmpContent"></div>
   </div>
 </div>
-<script src="/js/production-ui.js?v=20260930-prod1"></script>
 </body></html>`;
 
   win.document.write(D);
